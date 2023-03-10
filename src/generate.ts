@@ -22,6 +22,20 @@ export function generatePreview() {
   bearing.drawPreview(canvas)
 }
 
+export function validate() {
+  let bearing = bearingFromForm()
+  try {
+    bearing.validate()
+    document.querySelector('#error')!.textContent = ''
+  } catch (e) {
+    if (e instanceof Error) {
+      document.querySelector('#error')!.textContent = e.message
+    } else {
+      document.querySelector('#error')!.textContent = 'Unknown error'
+    }
+  }
+}
+
 function bearingFromForm(): Bearing {
   // Get the form values
   let outerDiameter = parseFloat(document.querySelector<HTMLInputElement>('#outer-diameter')!.value)

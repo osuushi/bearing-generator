@@ -5,6 +5,7 @@ import { newXZPoint, Point, Triangle } from "./types";
 const retentionRadiusOffset = 1;
 const retentionVerticalOffset = .5;
 const retentionTiltOffset = 2;
+const minThickness = 1.25;
 
 export class Bearing {
   outerDiameter: number;
@@ -249,5 +250,11 @@ export class Bearing {
     // Compute a nice file name from the specs
     const formatNumber = (n: number) => n.toFixed(2).replace(/\.?0*$/, '');
     return `bearing-${formatNumber(this.boreDiameter)}-${formatNumber(this.outerDiameter)}-${formatNumber(this.width)}-${formatNumber(this.clearance)}.stl`;
+  }
+
+  validate() {
+    if (this.boreDiameter >= this.sliderInnerDiameter - minThickness * 2 - this.clearance * 2) {
+      throw new Error('Bore diameter is too large for the outer diameter');
+    }
   }
 }
