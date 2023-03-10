@@ -1,6 +1,6 @@
 # bearing-generator
 
-This is a small standalone web-app written in typescript which generates STL
+This is a small standalone web app written in typescript which generates STL
 files for simple 3D printed bearings which can be printed in place.
 
 This is fully client-side, so there is no need to check out the code if you just
