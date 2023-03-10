@@ -1,5 +1,5 @@
 import { Bearing } from "./bearing"
-import { makeAsciiSTL } from "./stl"
+import { makeAsciiSTL, makeBinarySTL } from "./stl"
 
 export function generate() {
   // Get the bearing
@@ -7,12 +7,14 @@ export function generate() {
   // Get the triangles
   let triangles = bearing.getTriangles()
   // Create the STL contents
-  const stl = makeAsciiSTL(triangles)
+  const stl = makeBinarySTL(triangles)
 
   // Create a link to download the STL
   let link = document.createElement('a')
   link.download = bearing.fileName
-  link.href = 'data:application/octet-stream,' + encodeURIComponent(stl)
+  // We have a uint8array, but we need a downloadable url. We can do this by creating a blob.
+  let blob = new Blob([stl], { type: 'application/octet-stream' })
+  link.href = URL.createObjectURL(blob)
   link.click()
 }
 
