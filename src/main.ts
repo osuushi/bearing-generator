@@ -38,7 +38,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <section>
       <figure>
       <figcaption>Cross section</figcaption>
-      <canvas id="preview" width="600" height="400"></canvas>
+      <canvas id="preview" width="600" height="300"></canvas>
       </figure>
     </section>
     <section>

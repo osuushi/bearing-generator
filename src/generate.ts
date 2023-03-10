@@ -11,7 +11,7 @@ export function generate() {
 
   // Create a link to download the STL
   let link = document.createElement('a')
-  link.download = 'bearing.stl'
+  link.download = bearing.fileName
   link.href = 'data:application/octet-stream,' + encodeURIComponent(stl)
   link.click()
 }

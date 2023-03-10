@@ -244,4 +244,10 @@ export class Bearing {
       ctx.fill();
     }
   }
+
+  get fileName(): string {
+    // Compute a nice file name from the specs
+    const formatNumber = (n: number) => n.toFixed(2).replace(/\.?0*$/, '');
+    return `bearing-${formatNumber(this.boreDiameter)}-${formatNumber(this.outerDiameter)}-${formatNumber(this.width)}-${formatNumber(this.clearance)}.stl`;
+  }
 }
