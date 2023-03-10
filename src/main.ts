@@ -1,4 +1,5 @@
 import { generate, generatePreview, validate } from "./generate"
+import "./style.css"
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <header style="margin-bottom:0; padding-bottom:0;">
