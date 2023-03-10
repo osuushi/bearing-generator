@@ -22,8 +22,11 @@ This is a typescript project and requires node 19.7.0. To build, run `yarn
 install`, then `yarn build`. To run a development server, run `yarn dev` and
 visit the localhost link it prints out.
 
-The project uses [vite](https://vitejs.dev/) for development. It has no other
-depedencies.
+The project uses [vite](https://vitejs.dev/) for development. Styles are
+provided by [mvp.css](https://andybrewer.github.io/mvp/). It has no other
+dependencies.
+
+
 
 ## STL Generation
 
