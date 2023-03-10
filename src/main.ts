@@ -35,15 +35,28 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </table>
     </section>
     <br>
-    <small> (Distance between the rings. For reference, 0.1 is doable on a well calibrated printer, 0.3 is a little wobbly, but much easier to print) </small>  
     <section>
       <figure>
       <figcaption>Cross section</figcaption>
       <canvas id="preview" width="600" height="400"></canvas>
       </figure>
     </section>
-    <br>
-    <button type="button" id="generate">Generate STL</button>
+    <section>
+    <button type="button" id="generate">Download STL</button>
+    </section>
+    <article>
+      <h2>Tips</h2>
+      <ul>
+        <li>A clearance of 0.3mm is a good tradeoff between ease of print and smoothness of operation.</li>
+        <li>
+          For smaller bearings, I recommend printing entirely as vertical walls rather than worrying about infill.
+          Just set the walls to "100", for example. This will make the bearing stronger, and it's still very
+          fast to print, since every layer will just be made up of circles.
+        </li>
+        <li>
+          These are, of course, not intended for high load applications. For example, I wouldn't use one in an actual skateboard.
+        </li>
+    </article>
   </form>
 `
 
