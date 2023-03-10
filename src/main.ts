@@ -1,18 +1,21 @@
 import { generate, generatePreview, validate } from "./generate"
 import "./style.css"
+import heroUrl from "./hero.jpg"
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <header style="margin-bottom:0; padding-bottom:0;">
       <h1> Bearing Generator </h1>
     </header>
     <form>
-    <p> 
+    <p>
+    <img src="${heroUrl}" alt="A 608 bearing printed in place" style="width:30%;float:right;margin-left:10px;border-radius:8px">
     This is an STL generator for simple print-in-place bearings. The bearings are made of
     three interlocked rings which can slide past each other to reduce friction.
     </p><p>
     Fill out the form below and click "Generate" to download the STL file.
     For example, the defaults produce a standard 608 (i.e. skateboard) bearing.
     </p>
+    
     <p>
     This design is surprisingly effective, and very fast to print. These bearings aren't terribly strong,
     of course, but for low load applications that don't need super low friction, they're great.
