@@ -1,5 +1,5 @@
 import { Bearing } from "./bearing"
-import { makeAsciiSTL, makeBinarySTL } from "./stl"
+import { makeBinarySTL } from "./stl"
 
 export function generate() {
   // Get the bearing
