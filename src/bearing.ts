@@ -196,12 +196,15 @@ export class Bearing {
     ctx.fillStyle = 'rgba(0, 0, 0, 1)';
     ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-    const upperLeftCorner = transform(newXZPoint(minX, minY));
-    const lowerRightCorner = transform(newXZPoint(maxX, maxY));
-
-    const bgGradient = ctx.createLinearGradient(upperLeftCorner.x, 0, lowerRightCorner.x, 0);
-    bgGradient.addColorStop(0, 'rgba(130, 147, 212, 1)')
-    bgGradient.addColorStop(1, 'rgba(39, 72, 198, 1)');
+    const leftPoint = transform(newXZPoint(-this.boreDiameter / 2, 0));
+    const rightPoint = transform(newXZPoint(this.boreDiameter / 2, 0));
+    const bgGradient = ctx.createLinearGradient(leftPoint.x, 0, rightPoint.x, 0);
+    const lightColor = 'rgba(206, 207, 176, 1)'
+    const shadeColor = 'rgba(102, 102, 69, 1)'
+    bgGradient.addColorStop(0, shadeColor);
+    bgGradient.addColorStop(0.45, lightColor)
+    bgGradient.addColorStop(0.55, lightColor)
+    bgGradient.addColorStop(1, shadeColor);
     ctx.fillStyle = bgGradient;
     // Draw the background rectangle
     ctx.fillRect(
@@ -210,11 +213,13 @@ export class Bearing {
       transform(newXZPoint(maxX, maxY)).x - transform(newXZPoint(minX, minY)).x,
       transform(newXZPoint(maxX, maxY)).z - transform(newXZPoint(minX, minY)).z,
     );
+    const upperLeftCorner = transform(newXZPoint(minX, minY));
+    const lowerRightCorner = transform(newXZPoint(maxX, maxY));
 
-    const fgGradient = ctx.createLinearGradient(upperLeftCorner.x, upperLeftCorner.z, lowerRightCorner.x, lowerRightCorner.z);
-    fgGradient.addColorStop(0, 'rgba(253, 203, 128, 1)');
-    fgGradient.addColorStop(0.5, 'rgba(255, 166, 0, 1)')
-    fgGradient.addColorStop(1, 'rgba(183, 119, 0, 1)')
+    const fgGradient = ctx.createLinearGradient(upperLeftCorner.x, upperLeftCorner.z, lowerRightCorner.x, upperLeftCorner.z);
+    fgGradient.addColorStop(0, 'rgba(255, 200, 90, 1)')
+    fgGradient.addColorStop(.5, 'rgba(240, 229, 200, 1)')
+    fgGradient.addColorStop(1, 'rgba(226, 194, 100, 1)')
     ctx.fillStyle = fgGradient;
 
     for (const polygon of polygons) {
