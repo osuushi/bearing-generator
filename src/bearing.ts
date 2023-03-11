@@ -169,7 +169,6 @@ export class Bearing {
     const minY = Math.min(...polygons.map(p => p.points.reduce((min, p) => Math.min(min, p.z), Infinity)));
     const maxY = Math.max(...polygons.map(p => p.points.reduce((max, p) => Math.max(max, p.z), -Infinity)));
 
-    console.log({ minX, maxX, minY, maxY });
 
     const canvasWidth = canvas.width;
     const canvasHeight = canvas.height;
@@ -177,7 +176,6 @@ export class Bearing {
     const scaleX = canvasWidth / (maxX - minX);
     const scaleY = canvasHeight / (maxY - minY);
     const scale = Math.min(scaleX, scaleY) * 0.8;
-    console.log({ scale })
     const translateX = canvasWidth / 2 - (maxX + minX) / 2 * scale;
     const translateY = canvasHeight / 2 - (maxY + minY) / 2 * scale;
 
@@ -188,7 +186,6 @@ export class Bearing {
       )
     }
 
-    console.log(transform(newXZPoint(11, 8)));
 
     const ctx = canvas.getContext('2d')!;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
