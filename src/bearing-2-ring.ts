@@ -33,7 +33,8 @@ export class Bearing2Ring {
   get gapCenterDiameter(): number {
     return (
       this.boreDiameter +
-      (this.outerDiameter - this.boreDiameter - retentionRadiusOffset) / 2
+      (this.outerDiameter - this.boreDiameter) / 2 -
+      retentionRadiusOffset
     );
   }
 
