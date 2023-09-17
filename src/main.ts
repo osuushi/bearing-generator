@@ -12,13 +12,22 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     This is an STL generator for simple print-in-place bearings. The bearings are made of
     three interlocked rings which can slide past each other to reduce friction.
     </p><p>
-    Fill out the form below and click "Generate" to download the STL file.
-    For example, the defaults produce a standard 608 (i.e. skateboard) bearing.
+    Fill out the form below and click "Download STL" to download the STL file. The default values give
+    a standard 608 (i.e. skateboard) bearing.
     </p>
-    
     <p>
     This design is surprisingly effective, and very fast to print. These bearings aren't terribly strong,
     of course, but for low load applications that don't need super low friction, they're great.
+    </p><p>
+    There are two bearing designs: one with two rings, and one with three rings.
+    </p><p>
+    The two ring design is simpler, stronger, and will have less play, since there is only one gap where
+    clearance is required for printing. The three ring design may have less friction, since it has two
+    gaps where the rings can slide past each other, but it has smaller parts, and requires clearance
+    for both gaps, so it has twice as much play.
+    </p><p>
+    In practice, the difference in friction between the two designs is pretty small, and in most cases,
+    the reduced play of the two ring design is a better tradeoff.
     </p>
     <section>
     <table>
