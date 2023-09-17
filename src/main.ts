@@ -1,8 +1,8 @@
-import { generate, generatePreview, validate } from "./generate"
-import "./style.css"
-import heroUrl from "./hero.jpg"
+import { generate, generatePreview, validate } from "./generate";
+import "./style.css";
+import heroUrl from "./hero.jpg";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <header style="margin-bottom:0; padding-bottom:0;">
       <h1> Bearing Generator </h1>
     </header>
@@ -23,6 +23,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <section>
     <table>
       <tr>
+        <td>
+          <label><input type="radio" id="2-rings" name="number-of-rings" value="2" checked>Two rings</label>
+          <label><input type="radio" id="3-rings" name="number-of-rings" value="3">3 rings</label>
+        </td>
         <td>
           <label for="outer-diameter">Outer diameter (mm)</label>
           <input type="number" id="outer-diameter" name="outer-diameter" value="22" step="0.1" min="10" max="1000" required>
@@ -71,37 +75,39 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         </li>
     </article>
   </form>
-`
+`;
 
-document.querySelector<HTMLButtonElement>('#generate')!.addEventListener('click', () => {
-  generate()
-})
+document
+  .querySelector<HTMLButtonElement>("#generate")!
+  .addEventListener("click", () => {
+    generate();
+  });
 
 // On any change, update the preview
-document.querySelectorAll<HTMLInputElement>('#app input').forEach(input => {
-  input.addEventListener('change', () => {
+document.querySelectorAll<HTMLInputElement>("#app input").forEach((input) => {
+  input.addEventListener("change", () => {
     // Enforce maxes and mins on each field
     let constrainField = (id: string) => {
-      let field = document.querySelector<HTMLInputElement>(id)!
-      let min = parseFloat(field.min)
-      let max = parseFloat(field.max)
-      let value = field.valueAsNumber
+      let field = document.querySelector<HTMLInputElement>(id)!;
+      let min = parseFloat(field.min);
+      let max = parseFloat(field.max);
+      let value = field.valueAsNumber;
       if (value < min) {
-        field.value = min.toString()
+        field.value = min.toString();
       } else if (value > max) {
-        field.value = max.toString()
+        field.value = max.toString();
       }
-    }
-    constrainField('#outer-diameter')
-    constrainField('#bore-diameter')
-    constrainField('#width')
-    constrainField('#clearance')
+    };
+    constrainField("#outer-diameter");
+    constrainField("#bore-diameter");
+    constrainField("#width");
+    constrainField("#clearance");
 
-    validate()
+    validate();
 
-    generatePreview()
-  })
-})
-generatePreview()
+    generatePreview();
+  });
+});
+generatePreview();
 
-export { }
+export {};
