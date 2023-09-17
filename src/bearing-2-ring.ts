@@ -243,7 +243,7 @@ export class Bearing2Ring {
   validate() {
     if (
       this.boreDiameter >=
-      this.gapCenterDiameter - minThickness * 2 - this.clearance * 2
+      this.gapCenterDiameter - minThickness * 2 - this.clearance
     ) {
       throw new Error("Bore diameter is too large for the outer diameter");
     }
