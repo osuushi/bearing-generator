@@ -1,4 +1,4 @@
-// A polygon as a list of points. By convention, this should be in
+// A polygon as a list of points. By convention, this should be in counterclockwise order.
 
 import { Point } from "./types";
 
